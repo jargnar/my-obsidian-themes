@@ -38,6 +38,16 @@ if [ -z "$DEFAULT_THEME" ]; then
   echo "[vault-setup] WARNING: no themes (manifest.json + theme.css) found in $REPO_ROOT" >&2
 fi
 
+# Classic Lotus Organizer section tabs, used to preview rainbow folder glyphs.
+for section in Calendar "To Do" Address Notepad Planner Calls; do
+  section_dir="$VAULT/$section"
+  mkdir -p "$section_dir"
+  note="$section_dir/${section}.md"
+  if [ ! -f "$note" ]; then
+    printf '# %s\n\nSection divider from a 1990s personal organizer.\n' "$section" > "$note"
+  fi
+done
+
 # --- Seed sample notes (only if missing, so edits are preserved) --------------
 if [ ! -f "$VAULT/Welcome.md" ]; then
   cat > "$VAULT/Welcome.md" <<'MD'
@@ -45,11 +55,15 @@ if [ ! -f "$VAULT/Welcome.md" ]; then
 
 This vault exists to preview the Obsidian themes in this repository.
 
-Switch themes from **Settings -> Appearance -> Themes**. All four repo themes
+Switch themes from **Settings -> Appearance -> Themes**. All repo themes
 are linked into `.obsidian/themes/` automatically:
 
 - Aqua 2000
+- Lotus Organizer
+- Newton MessagePad
+- Palm OS Memo Pad
 - Vercel Noir
+- Windows 3.1 Cardfile
 - Windows Vista Aero
 - Windows XP Luna
 
@@ -103,12 +117,16 @@ Normal text with **bold**, *italic*, ~~strikethrough~~, `inline code`, and a
 
 ## Table
 
-| Theme              | Author | Version |
-| ------------------ | ------ | ------- |
-| Aqua 2000          | Suhas  | 3.0.1   |
-| Vercel Noir        | Suhas  | 3.0.1   |
-| Windows Vista Aero | Suhas  | 3.0.1   |
-| Windows XP Luna    | Suhas  | 3.0.1   |
+| Theme                 | Author | Version |
+| --------------------- | ------ | ------- |
+| Aqua 2000             | Suhas  | 3.0.3   |
+| Lotus Organizer       | Suhas  | 1.0.0   |
+| Newton MessagePad     | Suhas  | 1.0.0   |
+| Palm OS Memo Pad      | Suhas  | 1.0.0   |
+| Vercel Noir           | Suhas  | 3.0.3   |
+| Windows 3.1 Cardfile  | Suhas  | 1.0.0   |
+| Windows Vista Aero    | Suhas  | 3.1.3   |
+| Windows XP Luna       | Suhas  | 3.1.3   |
 
 ## Code block
 
