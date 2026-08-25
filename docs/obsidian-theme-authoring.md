@@ -57,7 +57,7 @@ Line counts on `main` at the time of writing:
 | `Vercel Noir/theme.css` | 1817 |
 | `Windows XP Luna/theme.css` | 2190 |
 | `Windows Vista Aero/theme.css` | 2186 |
-| `Lotus Organizer/theme.css` | 2235 |
+| `Lotus Organizer/theme.css` | 2252 |
 
 XP / Vista / Organizer are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Organizer also paints rainbow section-tab folder glyphs and left-edge brass rings instead of a top spiral.
 

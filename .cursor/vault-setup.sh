@@ -38,6 +38,16 @@ if [ -z "$DEFAULT_THEME" ]; then
   echo "[vault-setup] WARNING: no themes (manifest.json + theme.css) found in $REPO_ROOT" >&2
 fi
 
+# Classic Lotus Organizer section tabs, used to preview rainbow folder glyphs.
+for section in Calendar "To Do" Address Notepad Planner Calls; do
+  section_dir="$VAULT/$section"
+  mkdir -p "$section_dir"
+  note="$section_dir/${section}.md"
+  if [ ! -f "$note" ]; then
+    printf '# %s\n\nSection divider from a 1990s personal organizer.\n' "$section" > "$note"
+  fi
+done
+
 # --- Seed sample notes (only if missing, so edits are preserved) --------------
 if [ ! -f "$VAULT/Welcome.md" ]; then
   cat > "$VAULT/Welcome.md" <<'MD'
