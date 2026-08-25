@@ -1,6 +1,6 @@
 # Obsidian theme authoring notes
 
-Field notes for the next human or AI who adds a fifth theme, or who has to touch titlebar / sidebar / traffic-light geometry in this repo.
+Field notes for the next human or AI who adds another theme, or who has to touch titlebar / sidebar / traffic-light geometry in this repo.
 
 These notes were written against **Obsidian 1.13.7** desktop (`minAppVersion` in every `manifest.json`). Native quotes come from the app stylesheet extracted from `/opt/Obsidian/resources/obsidian.asar` to `/tmp/obsidian-css/app.css` in the Cloud Agent VM. Class names and variables drift between Obsidian releases; re-extract `app.css` and re-check the selectors below before trusting this document on a newer build.
 
@@ -16,12 +16,15 @@ This document is the unofficial half: the DOM, the traps, and the geometry this 
 
 ## 1. What this repo actually is
 
-Not a plugin. Not a snippet pack. Four **standalone community-style themes**.
+Not a plugin. Not a snippet pack. Five **standalone community-style themes**.
 
 Each theme is a top-level folder that contains exactly two required files:
 
 ```text
 Aqua 2000/
+  manifest.json
+  theme.css
+Lotus Organizer/
   manifest.json
   theme.css
 Vercel Noir/
@@ -37,12 +40,12 @@ Windows Vista Aero/
 
 Obsidian lists themes by **folder name**. Official docs also require the folder name to match `manifest.json` `name` exactly. Restart Obsidian after renaming either.
 
-A theme **cannot import another theme's CSS**. There is no shared `geometry.css`. The desktop chrome chapter is therefore **duplicated verbatim** in all four `theme.css` files (~605 lines). The only intentional difference in that chapter is the body guard:
+A theme **cannot import another theme's CSS**. There is no shared `geometry.css`. The desktop chrome chapter is therefore **duplicated verbatim** in every `theme.css` (~605 lines). The only intentional difference in that chapter is the body guard:
 
 | Family | Guard | Why |
 | --- | --- | --- |
 | Aqua 2000, Vercel Noir | `body.theme-dark:not(.is-mobile)` | Dark clients. If the user flips Appearance to Light, these themes go inert and stock light UI returns. |
-| Windows XP Luna, Windows Vista Aero | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
+| Windows XP Luna, Windows Vista Aero, Lotus Organizer | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
 
 If you copy geometry into a new theme and keep the wrong guard, either the chrome never applies or it fails when the user toggles the base color scheme.
 
@@ -54,8 +57,9 @@ Line counts on `main` at the time of writing:
 | `Vercel Noir/theme.css` | 1817 |
 | `Windows XP Luna/theme.css` | 2190 |
 | `Windows Vista Aero/theme.css` | 2186 |
+| `Lotus Organizer/theme.css` | 2235 |
 
-XP / Vista are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs.
+XP / Vista / Organizer are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Organizer also paints rainbow section-tab folder glyphs and left-edge brass rings instead of a top spiral.
 
 Current versions:
 
@@ -65,18 +69,19 @@ Current versions:
 | Vercel Noir | 3.0.3 |
 | Windows XP Luna | 3.1.3 |
 | Windows Vista Aero | 3.1.3 |
+| Lotus Organizer | 1.0.0 |
 
-Bump the theme you edited. Geometry-only changes that land in all four files should bump all four.
+Bump the theme you edited. Geometry-only changes that land in every theme file should bump every theme.
 
 ---
 
-## 2. Recipe: add a fifth theme
+## 2. Recipe: add another theme
 
 Do this, in order.
 
 1. **Pick a family.**
    - Dark editor + dark or mid chrome that is readable with the same ink as the panes: clone **Aqua 2000** or **Vercel Noir**.
-   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt) or **Windows Vista Aero** (frosted glass). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
+   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt), **Windows Vista Aero** (frosted glass), or **Lotus Organizer** (burgundy leather + brass rings). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
 
 2. **Copy a whole folder.** Name it exactly as it should appear in Settings → Appearance → Themes. Example: `System 7/`.
 
@@ -118,8 +123,8 @@ Do this, in order.
 From Obsidian's own theme guidelines, plus what we verified in 1.13.7:
 
 - A theme is `manifest.json` + `theme.css`. Nothing else is required.
-- **No remote assets.** Community themes must not fetch fonts or images. XP / Vista spiral rings and paper grain are `data:image/svg+xml,…` URLs.
-- **No `!important`.** All four themes have zero. Specificity comes from long `body…` selectors. Snippets and user overrides should still be able to win.
+- **No remote assets.** Community themes must not fetch fonts or images. XP / Vista / Organizer rings and paper grain are `data:image/svg+xml,…` URLs.
+- **No `!important`.** Every theme has zero. Specificity comes from long `body…` selectors. Snippets and user overrides should still be able to win.
 - Prefer **CSS variables** over restyling every component. The OBSIDIAN VARIABLE MAP exists so core and plugins pick up the palette without per-widget rules.
 - Official docs say: put scheme-independent variables on `body`, colors on `.theme-dark` / `.theme-light`, and use `:root` sparingly (plugin authors hang things there). This repo puts almost everything on the guarded `body…` selector so mobile is untouched.
 - `minAppVersion` is a compatibility floor, not a compiler. Bump it only when you rely on a newer selector or variable.
@@ -139,7 +144,7 @@ Every file is the same story in the same order. Keep new rules in the matching c
 5. **SURFACES, NAVIGATION, AND STANDARD CONTROLS** — ribbon, splits, nav, buttons, inputs, tooltips, status bar, scrollbars.
 6. **EDITOR AND DOCUMENT POLISH** — headings, code, tables, callouts, reduced-motion, narrow-width tweaks.
 7. **PERIOD FOLDER GLYPHS** — extra folder body on file-explorer titles. Native disclosure chevron stays.
-8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — XP / Vista only. Light root panes, spiral binding, Settings ink-on-cream, modal window frames. Aqua / Noir do not have this chapter.
+8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — XP / Vista / Organizer. Light root panes, binding (top spiral on XP/Vista, left brass rings on Organizer), Settings ink-on-cream, modal window frames. Aqua / Noir do not have this chapter.
 
 ### 4.1 Palette tokens you will actually paint with
 
@@ -159,7 +164,7 @@ Names are shared across themes even when the hues differ. The important clusters
 | `--suite-ghost-*` | Hover/active treatment for in-pane `.clickable-icon` (view header, nav). |
 | `--suite-status-*` | Status bar. On XP/Vista this is also blue chrome and needs the same icon pin as the titlebar. |
 
-XP / Vista extras that are not in Aqua / Noir: spiral / grain / paper tokens, window-frame blues, Start-green (XP uses it; Vista currently defines unused copies).
+XP / Vista / Organizer extras that are not in Aqua / Noir: spiral / grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer reuses the token for a brass home capsule). Organizer also defines `--suite-paper-lines` for ruled Filofax paper.
 
 ### 4.2 Why the variable map exists
 
@@ -646,7 +651,7 @@ View-header icons on the notepad (reading/live-preview/more) are also pane icons
 
 ### 10.5 Status bar
 
-XP / Vista paint a blue status bar. The same leak applies. They pin `--icon-color*` on `.status-bar`. Aqua / Noir status bars already match pane luminance and only set `color` / background.
+XP / Vista / Organizer paint a saturated status bar. The same leak applies. They pin `--icon-color*` on `.status-bar`. Aqua / Noir status bars already match pane luminance and only set `color` / background.
 
 ### 10.6 Measured contrast after the pin (1.13.7, this VM)
 
@@ -675,7 +680,7 @@ On XP, `--background-modifier-hover` is the yellow notepad hover (`#f0cf55`). If
 
 ## 11. Light client, dark Settings, and `color-scheme`
 
-XP / Vista force a light client in both Appearance schemes (`color-scheme: light`, yellow paper, cream Explorer). That created a second class of bugs that Aqua / Noir never saw:
+XP / Vista / Organizer force a light client in both Appearance schemes (`color-scheme: light`, paper editor, cream Explorer). That created a second class of bugs that Aqua / Noir never saw:
 
 - **Settings / community / vertical tabs.** Core paints `.vertical-tab-content` with `--background-primary`. If you mapped `--background-primary` to a dark editor (the original XP experiment) or if some pane still inherits a dark token, labels become dark-on-dark. The notebook chapter re-maps `--background-primary` / `--text-*` / `--icon-color` on `.vertical-tab-content` and `.horizontal-tab-content` to panel cream.
 - **`.workspace { background }` is assigned twice** on XP/Vista: once to `--suite-editor-bg` in SURFACES, then overwritten to `--suite-desk-bg` in NOTEBOOK. The first assignment is leftover. Harmless; the second is the wallpaper you see around the notepad.
@@ -741,7 +746,7 @@ A CSS audit after PR #4 found the chrome **clean enough**. These leftovers are r
 | `.workspace { background: var(--suite-editor-bg) }` | XP + Vista SURFACES | Immediately overwritten by the notebook chapter's `--suite-desk-bg`. |
 | Duplicate macOS `padding-right: var(--suite-edge-gap)` | All four geometry chapters | Same value as the platform-agnostic rule above it. |
 
-Zero `!important` in all four themes. Do not introduce one to win a specificity fight; lengthen the selector instead. The only `!important` we used while testing was in the **vault-only** Linux traffic-light snippet, which is not in this repo.
+Zero `!important` in every theme. Do not introduce one to win a specificity fight; lengthen the selector instead. The only `!important` we used while testing was in the **vault-only** Linux traffic-light snippet, which is not in this repo.
 
 ---
 
@@ -831,7 +836,7 @@ Enable the snippet in Appearance → CSS snippets. `vault-setup.sh` does **not**
 | Action | Use |
 | --- | --- |
 | `Ctrl+R` in the Obsidian window | CSS / snippet iteration. Keeps `cssTheme`, workspace widths, snippet enablement. |
-| Appearance → Themes dropdown | Switch among the four (plus a fifth). |
+| Appearance → Themes dropdown | Switch among the repo themes. |
 | `.cursor/run-obsidian.sh` | Only if Obsidian is dead. Re-runs vault-setup and may reset `cssTheme` to Aqua 2000. |
 
 Do not `pkill -f obsidian`. If you must restart, kill the specific PID from the `obsidian` terminal.
@@ -903,7 +908,7 @@ Things we hit or narrowly avoided:
 
 - Top spacer and the top header container are `-webkit-app-region: drag` so users can move a frameless window. Buttons must stay `no-drag` (native `.clickable-icon` already sets this; do not override it).
 - Popout windows: `body.is-popout-window`. macOS gives them a flat 80px left well and no ribbon. This repo excludes them from `--suite-macos-safe-left` and uses `--suite-edge-gap`.
-- Stacked tabs (`.workspace-tabs.mod-stacked`) have a different header layout. We did not restyle that path beyond what the variable map does. If a fifth theme cares about stacked tabs, inspect `.workspace .mod-root .workspace-tabs.mod-stacked` in `app.css` (~7057) before copying the top-row flex order onto it.
+- Stacked tabs (`.workspace-tabs.mod-stacked`) have a different header layout. We did not restyle that path beyond what the variable map does. If a new theme cares about stacked tabs, inspect `.workspace .mod-root .workspace-tabs.mod-stacked` in `app.css` (~7057) before copying the top-row flex order onto it.
 - Graph, canvas, backlinks, outgoing links, file view: XP/Vista notebook chapter forces paper background + ink on those root panes so they do not flash a dark `--background-primary`.
 
 ---
@@ -956,7 +961,7 @@ BODY :is(.vertical-tab-content, .horizontal-tab-content)  /* XP/Vista settings *
 
 ---
 
-## 21. Appendix C — fifth-theme decision table
+## 21. Appendix C — new-theme decision table
 
 | If you want… | Clone | Guard | Also copy |
 | --- | --- | --- | --- |
@@ -964,6 +969,7 @@ BODY :is(.vertical-tab-content, .horizontal-tab-content)  /* XP/Vista settings *
 | Dark editor, **saturated** chrome | Aqua 2000, then recolor `--suite-chrome-*` / `--suite-control-text` | same | Pin `--icon-color` on the header even if you think contrast is fine. |
 | Light notepad + blue chrome | Windows XP Luna | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Geometry + notebook/settings chapter + status-bar icon pin. |
 | Light notepad + glass chrome | Windows Vista Aero | same | Same as Luna. Do not assume Vista's `--suite-start-green` does anything. |
+| Light notepad + burgundy leather | Lotus Organizer | same | Same as Luna, plus rainbow section-tab folders and left-edge brass rings. |
 | Light editor + light chrome | Start from Luna, flatten `--suite-chrome-*` toward `--suite-panel-bg` | same | You can ease the icon pin, but keep the sidedock-clone hide and flex order. |
 
 Never start from a blank `theme.css` and re-derive traffic-light math. Copy the geometry chapter first, then paint.

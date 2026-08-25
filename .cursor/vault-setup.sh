@@ -45,10 +45,11 @@ if [ ! -f "$VAULT/Welcome.md" ]; then
 
 This vault exists to preview the Obsidian themes in this repository.
 
-Switch themes from **Settings -> Appearance -> Themes**. All four repo themes
+Switch themes from **Settings -> Appearance -> Themes**. All repo themes
 are linked into `.obsidian/themes/` automatically:
 
 - Aqua 2000
+- Lotus Organizer
 - Vercel Noir
 - Windows Vista Aero
 - Windows XP Luna
@@ -105,10 +106,11 @@ Normal text with **bold**, *italic*, ~~strikethrough~~, `inline code`, and a
 
 | Theme              | Author | Version |
 | ------------------ | ------ | ------- |
-| Aqua 2000          | Suhas  | 3.0.1   |
-| Vercel Noir        | Suhas  | 3.0.1   |
-| Windows Vista Aero | Suhas  | 3.0.1   |
-| Windows XP Luna    | Suhas  | 3.0.1   |
+| Aqua 2000          | Suhas  | 3.0.3   |
+| Lotus Organizer    | Suhas  | 1.0.0   |
+| Vercel Noir        | Suhas  | 3.0.3   |
+| Windows Vista Aero | Suhas  | 3.1.3   |
+| Windows XP Luna    | Suhas  | 3.1.3   |
 
 ## Code block
 
