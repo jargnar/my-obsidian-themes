@@ -16,7 +16,7 @@ This document is the unofficial half: the DOM, the traps, and the geometry this 
 
 ## 1. What this repo actually is
 
-Not a plugin. Not a snippet pack. Five **standalone community-style themes**.
+Not a plugin. Not a snippet pack. Eight **standalone community-style themes**.
 
 Each theme is a top-level folder that contains exactly two required files:
 
@@ -27,7 +27,16 @@ Aqua 2000/
 Lotus Organizer/
   manifest.json
   theme.css
+Newton MessagePad/
+  manifest.json
+  theme.css
+Palm OS Memo Pad/
+  manifest.json
+  theme.css
 Vercel Noir/
+  manifest.json
+  theme.css
+Windows 3.1 Cardfile/
   manifest.json
   theme.css
 Windows XP Luna/
@@ -45,7 +54,7 @@ A theme **cannot import another theme's CSS**. There is no shared `geometry.css`
 | Family | Guard | Why |
 | --- | --- | --- |
 | Aqua 2000, Vercel Noir | `body.theme-dark:not(.is-mobile)` | Dark clients. If the user flips Appearance to Light, these themes go inert and stock light UI returns. |
-| Windows XP Luna, Windows Vista Aero, Lotus Organizer | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
+| Windows XP Luna, Windows Vista Aero, Lotus Organizer, Newton MessagePad, Windows 3.1 Cardfile, Palm OS Memo Pad | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
 
 If you copy geometry into a new theme and keep the wrong guard, either the chrome never applies or it fails when the user toggles the base color scheme.
 
@@ -58,8 +67,11 @@ Line counts on `main` at the time of writing:
 | `Windows XP Luna/theme.css` | 2190 |
 | `Windows Vista Aero/theme.css` | 2186 |
 | `Lotus Organizer/theme.css` | 2252 |
+| `Newton MessagePad/theme.css` | 2184 |
+| `Windows 3.1 Cardfile/theme.css` | 2176 |
+| `Palm OS Memo Pad/theme.css` | 2180 |
 
-XP / Vista / Organizer are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Organizer also paints rainbow section-tab folder glyphs and left-edge brass rings instead of a top spiral.
+Light-client themes are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Binding decorations differ: XP/Vista use a top spiral, Organizer uses left brass rings, Newton uses a bottom silk bar, Cardfile uses a top letter strip, Palm uses a bottom graffiti silk.
 
 Current versions:
 
@@ -70,6 +82,9 @@ Current versions:
 | Windows XP Luna | 3.1.3 |
 | Windows Vista Aero | 3.1.3 |
 | Lotus Organizer | 1.0.0 |
+| Newton MessagePad | 1.0.0 |
+| Windows 3.1 Cardfile | 1.0.0 |
+| Palm OS Memo Pad | 1.0.0 |
 
 Bump the theme you edited. Geometry-only changes that land in every theme file should bump every theme.
 
@@ -81,7 +96,7 @@ Do this, in order.
 
 1. **Pick a family.**
    - Dark editor + dark or mid chrome that is readable with the same ink as the panes: clone **Aqua 2000** or **Vercel Noir**.
-   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt), **Windows Vista Aero** (frosted glass), or **Lotus Organizer** (burgundy leather + brass rings). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
+   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt), **Windows Vista Aero** (frosted glass), **Lotus Organizer** (burgundy leather), **Newton MessagePad** (black + LCD), **Windows 3.1 Cardfile** (navy + gray 3D), or **Palm OS Memo Pad** (charcoal + olive LCD). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
 
 2. **Copy a whole folder.** Name it exactly as it should appear in Settings → Appearance → Themes. Example: `System 7/`.
 
@@ -144,7 +159,7 @@ Every file is the same story in the same order. Keep new rules in the matching c
 5. **SURFACES, NAVIGATION, AND STANDARD CONTROLS** — ribbon, splits, nav, buttons, inputs, tooltips, status bar, scrollbars.
 6. **EDITOR AND DOCUMENT POLISH** — headings, code, tables, callouts, reduced-motion, narrow-width tweaks.
 7. **PERIOD FOLDER GLYPHS** — extra folder body on file-explorer titles. Native disclosure chevron stays.
-8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — XP / Vista / Organizer. Light root panes, binding (top spiral on XP/Vista, left brass rings on Organizer), Settings ink-on-cream, modal window frames. Aqua / Noir do not have this chapter.
+8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — every light-client theme. Light root panes, period binding (top spiral, left rings, silk bar, letter strip, or graffiti), Settings ink-on-paper, modal window frames. Aqua / Noir do not have this chapter.
 
 ### 4.1 Palette tokens you will actually paint with
 
@@ -164,7 +179,7 @@ Names are shared across themes even when the hues differ. The important clusters
 | `--suite-ghost-*` | Hover/active treatment for in-pane `.clickable-icon` (view header, nav). |
 | `--suite-status-*` | Status bar. On XP/Vista this is also blue chrome and needs the same icon pin as the titlebar. |
 
-XP / Vista / Organizer extras that are not in Aqua / Noir: spiral / grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer reuses the token for a brass home capsule). Organizer also defines `--suite-paper-lines` for ruled Filofax paper.
+Light-client extras that are not in Aqua / Noir: spiral / grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer / Newton / Cardfile / Palm reuse it for period home capsules). Organizer, Newton, Cardfile, and Palm also define `--suite-paper-lines`.
 
 ### 4.2 Why the variable map exists
 
@@ -970,6 +985,9 @@ BODY :is(.vertical-tab-content, .horizontal-tab-content)  /* XP/Vista settings *
 | Light notepad + blue chrome | Windows XP Luna | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Geometry + notebook/settings chapter + status-bar icon pin. |
 | Light notepad + glass chrome | Windows Vista Aero | same | Same as Luna. Do not assume Vista's `--suite-start-green` does anything. |
 | Light notepad + burgundy leather | Lotus Organizer | same | Same as Luna, plus rainbow section-tab folders and left-edge brass rings. |
+| Light LCD + black hardware | Newton MessagePad | same | Same as Luna, plus bottom silk buttons and a dark view-header icon pin. |
+| Light index cards + navy chrome | Windows 3.1 Cardfile | same | Same as Luna, plus a top A–M letter strip. Status bar is gray: pin dark icons. |
+| Light olive LCD + charcoal plastic | Palm OS Memo Pad | same | Same as Luna, plus bottom graffiti silk and a dark view-header icon pin. |
 | Light editor + light chrome | Start from Luna, flatten `--suite-chrome-*` toward `--suite-panel-bg` | same | You can ease the icon pin, but keep the sidedock-clone hide and flex order. |
 
 Never start from a blank `theme.css` and re-derive traffic-light math. Copy the geometry chapter first, then paint.

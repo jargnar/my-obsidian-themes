@@ -60,7 +60,10 @@ are linked into `.obsidian/themes/` automatically:
 
 - Aqua 2000
 - Lotus Organizer
+- Newton MessagePad
+- Palm OS Memo Pad
 - Vercel Noir
+- Windows 3.1 Cardfile
 - Windows Vista Aero
 - Windows XP Luna
 
@@ -114,13 +117,16 @@ Normal text with **bold**, *italic*, ~~strikethrough~~, `inline code`, and a
 
 ## Table
 
-| Theme              | Author | Version |
-| ------------------ | ------ | ------- |
-| Aqua 2000          | Suhas  | 3.0.3   |
-| Lotus Organizer    | Suhas  | 1.0.0   |
-| Vercel Noir        | Suhas  | 3.0.3   |
-| Windows Vista Aero | Suhas  | 3.1.3   |
-| Windows XP Luna    | Suhas  | 3.1.3   |
+| Theme                 | Author | Version |
+| --------------------- | ------ | ------- |
+| Aqua 2000             | Suhas  | 3.0.3   |
+| Lotus Organizer       | Suhas  | 1.0.0   |
+| Newton MessagePad     | Suhas  | 1.0.0   |
+| Palm OS Memo Pad      | Suhas  | 1.0.0   |
+| Vercel Noir           | Suhas  | 3.0.3   |
+| Windows 3.1 Cardfile  | Suhas  | 1.0.0   |
+| Windows Vista Aero    | Suhas  | 3.1.3   |
+| Windows XP Luna       | Suhas  | 3.1.3   |
 
 ## Code block
 

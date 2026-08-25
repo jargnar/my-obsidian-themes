@@ -1,6 +1,6 @@
 # my-obsidian-themes
 
-Five standalone Obsidian desktop themes, each a folder with `manifest.json` and `theme.css`:
+Eight standalone Obsidian desktop themes, each a folder with `manifest.json` and `theme.css`:
 
 | Folder | Palette | Client surfaces | Body guard |
 | --- | --- | --- | --- |
@@ -9,6 +9,9 @@ Five standalone Obsidian desktop themes, each a folder with `manifest.json` and 
 | `Windows XP Luna` | Luna Blue chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows Vista Aero` | Aero glass chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Lotus Organizer` | Burgundy leather, brass rings, cream Filofax pages | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Newton MessagePad` | Black hardware, olive-green LCD, silk buttons | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Windows 3.1 Cardfile` | Navy titlebar, 3D gray chrome, index cards | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Palm OS Memo Pad` | Charcoal plastic, olive graffiti LCD | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 
 Target app version is **Obsidian 1.13.7** (`minAppVersion` in every manifest). Desktop-only by design: mobile keeps stock UI.
 
@@ -18,15 +21,15 @@ Preview scripts live in [`.cursor/`](.cursor/). They symlink every theme folder 
 
 ## 1990s note-taking homages
 
-The first four themes already cover Aqua, a modern dark client, and XP/Vista yellow legal pads. A fifth period theme should clone **Windows XP Luna** (light notepad + saturated chrome) and pick a product whose chrome is not another cobalt titlebar.
+XP / Vista already own the yellow legal pad. New period themes clone **Windows XP Luna** (light notepad + saturated chrome) and pick a product whose chrome is not another cobalt titlebar.
 
-| Homage | Why it works here | Why we skipped or shipped it |
+| Homage | Why it works here | Status |
 | --- | --- | --- |
-| **Lotus Organizer 2.1 / 97** | The Filofax-on-Windows PIM. Burgundy cover, brass rings, rainbow section tabs. Instantly readable as a 90s notebook and visually opposite XP Luna. | **Shipped.** |
-| Newton MessagePad Notes | Green LCD, hardware bezel, handwriting-era cream. Distinct, but more PDA than desk PIM. | Strong follow-up if we want a green client. |
-| HyperCard | Card stacks, Home button, System 7 chrome. Great for a stacked-tab experiment. | Needs stacked-tab work the geometry chapter has not restyled. |
-| Windows 3.1 Cardfile | Beige 3D index cards. Period-perfect, quieter than Organizer. | Easy Luna clone if we want a muted light theme. |
-| Palm OS Memo Pad | Grayscale-green graffiti LCD. Very specific, limited palette. | Better as a dark-green Aqua-family theme. |
-| ECCO Pro | Power-user outliner. Famous, visually plain. | Not wild enough for a fifth theme. |
-| Lotus Notes R4/R5 | Green workspace tabs. Groupware, not a personal notebook. | Different metaphor. |
-| Magic Cap | Rooms and desks. Conceptual, hard to map onto Obsidian chrome. | Fun, poor fit. |
+| **Lotus Organizer 2.1 / 97** | Filofax-on-Windows PIM. Burgundy cover, brass rings, rainbow section tabs. | Shipped |
+| **Newton MessagePad Notes** | Green LCD, black hardware bezel, silk Undo/Names/Dates bar. | Shipped |
+| **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. | Shipped |
+| **Palm OS Memo Pad** | Olive graffiti LCD, charcoal plastic, 123 silk. | Shipped |
+| HyperCard | Card stacks, Home button, System 7 chrome. | Needs stacked-tab work this repo has not restyled |
+| ECCO Pro | Famous outliner, visually plain. | Skipped |
+| Lotus Notes R4/R5 | Green workspace tabs. Groupware, not a personal notebook. | Skipped |
+| Magic Cap | Rooms and desks. Conceptual, poor map onto Obsidian chrome. | Skipped |
