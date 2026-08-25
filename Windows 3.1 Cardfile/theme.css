@@ -1931,6 +1931,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root {
   background: var(--suite-desk-bg);
+  padding: 6px;
 }
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)
