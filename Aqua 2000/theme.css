@@ -1,6 +1,6 @@
 /*
  * Aqua 2000 — standalone Obsidian desktop theme
- * Version 3.0.1; designed for Obsidian 1.13.7+.
+ * Version 3.0.3; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded by
  * body.theme-dark:not(.is-mobile), so Obsidian mobile keeps its default UI.
@@ -750,13 +750,31 @@ body.theme-dark:not(.is-mobile) {
   --suite-icon-size: 17px;
   --suite-chrome-gap: 4px;
   --suite-edge-gap: 6px;
-  --suite-macos-ribbon-compensation: var(--ribbon-width, 42px);
+  --suite-macos-traffic-gap: 16px;
+  --suite-macos-ribbon-compensation: 0px;
+  --suite-macos-safe-left: 0px;
+  --suite-left-chrome-min: calc(
+    (var(--suite-side-tab-size) + 2px) * 3 +
+    var(--suite-control-size) +
+    var(--suite-edge-gap) +
+    8px
+  );
+}
+
+/* Theme --ribbon-width beats Obsidian's hidden-ribbon reset. Put it back
+   so --frame-left-space becomes the full 80px traffic-light well. */
+body.theme-dark:not(.is-mobile):not(.show-ribbon) {
+  --ribbon-width: 0px;
 }
 
 body.theme-dark:not(.is-mobile)
   .workspace-tabs.mod-top
   > .workspace-tab-header-container {
   box-sizing: border-box;
+  --icon-color: var(--suite-control-text);
+  --icon-color-hover: var(--suite-control-hover-text);
+  --icon-color-active: var(--suite-control-text);
+  --icon-color-focused: var(--suite-side-tab-active-text);
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -929,6 +947,7 @@ body.theme-dark:not(.is-mobile)
   width: var(--suite-icon-size);
   height: var(--suite-icon-size);
   margin: 0;
+  filter: var(--suite-control-icon-filter, none);
 }
 
 /* Root document tabs: no native curves, dividers, or accent underlines. */
@@ -1016,19 +1035,19 @@ body.theme-dark:not(.is-mobile)
   box-shadow: var(--suite-danger-shadow);
 }
 
-/* Sidedock new-tab clones stay hidden. The shared control rules above
-   un-hide every .workspace-tab-header-new-tab; in an open left dock that
-   plus is order 0 and lands under the macOS traffic lights. */
+/* Sidedock new-tab and tab-list clones stay hidden. The shared control
+   rules above un-hide every chrome control; in an open left dock those
+   extras are order 0 and land under the macOS traffic lights. */
 body.theme-dark:not(.is-mobile)
   .workspace-split:is(.mod-left-split, .mod-right-split)
   .workspace-tabs.mod-top
-  .workspace-tab-header-new-tab {
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list) {
   display: none;
 }
 
 /* Closed sidebars: toggles enter the root row without disturbing tab geometry.
-   Root actions sit as [tabs][spacer][+ new tab][tab list][right toggle] so
-   the plus is not stranded in the middle of the titlebar. */
+   Root actions sit as [tabs][+ new tab][spacer][tab list][right toggle] —
+   the plus stays next to the last tab title, like a browser tab strip. */
 body.theme-dark:not(.is-mobile)
   .workspace-split.mod-root
   .workspace-tabs.mod-top-left-space
@@ -1043,17 +1062,10 @@ body.theme-dark:not(.is-mobile)
   > .workspace-tab-header-container
   > .workspace-tab-header-container-inner {
   order: 0;
-}
-
-body.theme-dark:not(.is-mobile)
-  .workspace-split.mod-root
-  .workspace-tabs.mod-top
-  > .workspace-tab-header-container
-  > .workspace-tab-header-spacer {
-  display: block;
-  flex: 1 1 auto;
-  min-width: 8px;
-  order: 1;
+  flex: 0 1 auto;
+  width: max-content;
+  min-width: 0;
+  max-width: calc(100% - (var(--suite-control-size) + var(--suite-chrome-gap)) * 3);
 }
 
 body.theme-dark:not(.is-mobile)
@@ -1066,8 +1078,19 @@ body.theme-dark:not(.is-mobile)
   left: auto;
   top: auto;
   right: auto;
+  order: 1;
+  margin-left: 0;
+}
+
+body.theme-dark:not(.is-mobile)
+  .workspace-split.mod-root
+  .workspace-tabs.mod-top
+  > .workspace-tab-header-container
+  > .workspace-tab-header-spacer {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 8px;
   order: 2;
-  margin-left: auto;
 }
 
 body.theme-dark:not(.is-mobile)
@@ -1136,6 +1159,9 @@ body.theme-dark:not(.is-mobile)
   .workspace-tab-header-container-inner
   > .workspace-tab-header {
   box-sizing: border-box;
+  --icon-color: var(--suite-control-text);
+  --icon-color-hover: var(--suite-control-hover-text);
+  --icon-color-focused: var(--suite-side-tab-active-text);
   flex: 0 0 var(--suite-side-tab-size);
   align-self: center;
   min-width: var(--suite-side-tab-size);
@@ -1169,6 +1195,9 @@ body.theme-dark:not(.is-mobile)
   .workspace-split:is(.mod-left-split, .mod-right-split):not(.is-sidedock-collapsed)
   .workspace-tab-header-container-inner
   > .workspace-tab-header.is-active {
+  --icon-color: var(--suite-side-tab-active-text);
+  --icon-color-hover: var(--suite-side-tab-active-text);
+  --icon-color-focused: var(--suite-side-tab-active-text);
   color: var(--suite-side-tab-active-text);
   border-color: var(--suite-side-tab-active-border);
   background: var(--suite-side-tab-active-bg);
@@ -1198,6 +1227,8 @@ body.theme-dark:not(.is-mobile)
   width: var(--suite-icon-size);
   height: var(--suite-icon-size);
   margin: 0;
+  color: var(--icon-color);
+  filter: var(--suite-control-icon-filter, none);
 }
 
 body.theme-dark:not(.is-mobile)
@@ -1226,8 +1257,18 @@ body.theme-dark:not(.is-mobile)
   margin-right: 0;
 }
 
-/* macOS traffic-light safe area. The fallback reserves the ribbon width;
-   a visible ribbon cancels that compensation. */
+/* Open left dock cannot shrink under the traffic-light well plus the
+   three icon tabs and the collapse control. */
+body.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace-split.mod-left-split:not(.is-sidedock-collapsed) {
+  min-width: calc(var(--suite-macos-safe-left) + var(--suite-left-chrome-min));
+}
+
+/* macOS traffic-light safe area.
+   Obsidian sets --frame-left-space to (80px - ribbon-width). Keep a dedicated
+   gap after that well so the themed buttons never kiss the green light.
+   Plugin hide-ribbon classes still add ribbon-width back when they hide the
+   ribbon without zeroing the variable. */
 @supports selector(body:has(.workspace-ribbon.mod-left)) {
   body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window):has(
       .workspace-ribbon.mod-left:not(.is-collapsed)
@@ -1240,14 +1281,18 @@ body.mod-macos.theme-dark:not(.is-mobile):is(.hider-ribbon, .hide-ribbon) {
   --suite-macos-ribbon-compensation: var(--ribbon-width, 42px);
 }
 
+body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window) {
+  --suite-macos-safe-left: calc(
+    var(--frame-left-space, 80px) +
+    var(--suite-macos-ribbon-compensation) +
+    var(--suite-macos-traffic-gap)
+  );
+}
+
 body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
   .workspace-tabs.mod-top-left-space
   > .workspace-tab-header-container {
-  padding-left: calc(
-    var(--frame-left-space, 38px) +
-    var(--suite-macos-ribbon-compensation) +
-    var(--suite-edge-gap)
-  );
+  padding-left: var(--suite-macos-safe-left);
 }
 
 body.mod-macos.theme-dark:not(.is-mobile)
