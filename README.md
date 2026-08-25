@@ -26,9 +26,9 @@ XP / Vista already own the yellow legal pad. New period themes clone **Windows X
 | Homage | Why it works here | Status |
 | --- | --- | --- |
 | **Lotus Organizer 2.1 / 97** | Filofax-on-Windows PIM. Burgundy cover, brass rings, rainbow section tabs. | Shipped |
-| **Newton MessagePad Notes** | Green LCD, black hardware bezel, silk Undo/Names/Dates bar. | Shipped |
-| **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. | Shipped |
-| **Palm OS Memo Pad** | Olive graffiti LCD, charcoal plastic, 123 silk. | Shipped |
+| **Newton MessagePad Notes** | Green LCD and black hardware bezel. Homage, not a replica silk bar. | Shipped |
+| **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. No replica A–M letter strip. | Shipped |
+| **Palm OS Memo Pad** | Olive graffiti LCD and charcoal plastic. Homage, not a replica 123 silk. | Shipped |
 | HyperCard | Card stacks, Home button, System 7 chrome. | Needs stacked-tab work this repo has not restyled |
 | ECCO Pro | Famous outliner, visually plain. | Skipped |
 | Lotus Notes R4/R5 | Green workspace tabs. Groupware, not a personal notebook. | Skipped |

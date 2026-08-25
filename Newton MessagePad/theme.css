@@ -1,6 +1,6 @@
 /*
  * Newton MessagePad — standalone Obsidian desktop theme
- * Version 1.0.0; designed for Obsidian 1.13.7+.
+ * Version 1.0.1; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
  * mobile keeps its default UI. No external assets, remote fonts, or
@@ -268,9 +268,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --suite-paper-bg: #c8d4a0;
   --suite-paper-alt: #b8c490;
-  --suite-spiral-height: 48px;
-  --suite-spiral-bar: #1c1c18;
-  --suite-spiral: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='48' viewBox='0 0 480 48'%3E%3Crect width='480' height='48' fill='%231c1c18'/%3E%3Cg fill='%232a2a24' stroke='%23c8d4a0' stroke-width='1'%3E%3Crect x='8' y='8' width='72' height='32' rx='10'/%3E%3Crect x='88' y='8' width='72' height='32' rx='10'/%3E%3Crect x='168' y='8' width='72' height='32' rx='10'/%3E%3Crect x='248' y='8' width='72' height='32' rx='10'/%3E%3Crect x='328' y='8' width='72' height='32' rx='10'/%3E%3Crect x='408' y='8' width='64' height='32' rx='10'/%3E%3C/g%3E%3Cg fill='%23dce8b8' font-family='Verdana,Tahoma,sans-serif' font-size='11' text-anchor='middle'%3E%3Ctext x='44' y='29'%3EUndo%3C/text%3E%3Ctext x='124' y='29'%3ENames%3C/text%3E%3Ctext x='204' y='29'%3EDates%3C/text%3E%3Ctext x='284' y='29'%3EExtras%3C/text%3E%3Ctext x='364' y='29'%3EFind%3C/text%3E%3Ctext x='440' y='29'%3EKb%3C/text%3E%3C/g%3E%3C/svg%3E");
   --suite-paper-lines: repeating-linear-gradient(180deg, transparent 0 2px, rgba(28, 36, 20, 0.05) 2px 3px);
   --suite-toolbar-bg: linear-gradient(180deg, #2a2a24, #1c1c18);
   --suite-toolbar-border: #0a0a08;
@@ -1927,8 +1924,9 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 
 /* ============================================================================
    NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY
-   Light LCD, inked type, and MessagePad silk buttons. Applies in both
+   Light LCD, inked type, and black hardware chrome. Applies in both
    Obsidian color schemes so Newton stays period-accurate either way.
+   No replica silk Undo/Names/Dates bar in the editor.
    ============================================================================ */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {
@@ -1987,26 +1985,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   background-image: var(--suite-paper-grain), var(--suite-paper-lines);
   background-repeat: repeat, repeat;
 }
-
-body:is(.theme-dark, .theme-light):not(.is-mobile)
-  .workspace-split.mod-root
-  .view-content::after {
-  content: "";
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--suite-spiral-height);
-  z-index: 6;
-  pointer-events: none;
-  background-image: var(--suite-spiral);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 100% 48px;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.18);
-}
-
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root

@@ -1,6 +1,6 @@
 /*
  * Palm OS Memo Pad — standalone Obsidian desktop theme
- * Version 1.0.0; designed for Obsidian 1.13.7+.
+ * Version 1.0.1; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
  * mobile keeps its default UI. No external assets, remote fonts, or
@@ -262,9 +262,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --suite-paper-bg: #9aaa70;
   --suite-paper-alt: #8a9a64;
-  --suite-spiral-height: 64px;
-  --suite-spiral-bar: #2a2a2a;
-  --suite-spiral: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='56' viewBox='0 0 320 56'%3E%3Crect width='320' height='56' fill='%232a2a2a'/%3E%3Crect x='8' y='6' width='148' height='44' fill='%23383838' stroke='%239aaa70' stroke-width='1'/%3E%3Crect x='164' y='6' width='148' height='44' fill='%23383838' stroke='%239aaa70' stroke-width='1'/%3E%3Cpath d='M20 36c18-18 36-2 54-16 12-9 28-4 40-14' fill='none' stroke='%237a8a58' stroke-width='2'/%3E%3Ctext x='238' y='34' fill='%23d4e0b0' font-family='Tahoma,sans-serif' font-size='16' text-anchor='middle'%3E123%3C/text%3E%3Cline x1='160' y1='6' x2='160' y2='50' stroke='%235a5a5a' stroke-width='2'/%3E%3C/svg%3E");
   --suite-paper-lines: repeating-linear-gradient(180deg, transparent 0 2px, rgba(20, 22, 14, 0.07) 2px 3px);
   --suite-toolbar-bg: #2a2a2a;
   --suite-toolbar-border: #0e0e0e;
@@ -1923,8 +1920,9 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 
 /* ============================================================================
    NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY
-   Olive LCD, graffiti silk, and plastic bezel. Applies in both Obsidian
-   color schemes so Memo Pad stays period-accurate either way.
+   Olive LCD and charcoal plastic bezel. Applies in both Obsidian color
+   schemes so Memo Pad stays period-accurate either way. No replica
+   graffiti / 123 silk bar in the editor.
    ============================================================================ */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {
@@ -1983,26 +1981,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   background-image: var(--suite-paper-grain), var(--suite-paper-lines);
   background-repeat: repeat, repeat;
 }
-
-body:is(.theme-dark, .theme-light):not(.is-mobile)
-  .workspace-split.mod-root
-  .view-content::after {
-  content: "";
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--suite-spiral-height);
-  z-index: 6;
-  pointer-events: none;
-  background-image: var(--suite-spiral);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 100% 64px;
-  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.22);
-}
-
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root

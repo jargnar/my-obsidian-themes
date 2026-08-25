@@ -1,6 +1,6 @@
 /*
  * Windows 3.1 Cardfile — standalone Obsidian desktop theme
- * Version 1.0.0; designed for Obsidian 1.13.7+.
+ * Version 1.0.1; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
  * mobile keeps its default UI. No external assets, remote fonts, or
@@ -261,9 +261,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --suite-paper-bg: #fffff0;
   --suite-paper-alt: #f5f0d8;
-  --suite-spiral-height: 28px;
-  --suite-spiral-bar: #c0c0c0;
-  --suite-spiral: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='28' viewBox='0 0 420 28'%3E%3Crect width='420' height='28' fill='%23c0c0c0'/%3E%3Cg font-family='Tahoma,sans-serif' font-size='11' font-weight='700' text-anchor='middle'%3E%3Crect x='4' y='4' width='28' height='20' fill='%23fffff0' stroke='%23000080' stroke-width='1'/%3E%3Ctext x='18' y='18' fill='%23000000'%3EA%3C/text%3E%3Crect x='36' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='50' y='19' fill='%23000000'%3EB%3C/text%3E%3Crect x='68' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='82' y='19' fill='%23000000'%3EC%3C/text%3E%3Crect x='100' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='114' y='19' fill='%23000000'%3ED%3C/text%3E%3Crect x='132' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='146' y='19' fill='%23000000'%3EE%3C/text%3E%3Crect x='164' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='178' y='19' fill='%23000000'%3EF%3C/text%3E%3Crect x='196' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='210' y='19' fill='%23000000'%3EG%3C/text%3E%3Crect x='228' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='242' y='19' fill='%23000000'%3EH%3C/text%3E%3Crect x='260' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='274' y='19' fill='%23000000'%3EI%3C/text%3E%3Crect x='292' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='306' y='19' fill='%23000000'%3EJ%3C/text%3E%3Crect x='324' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='338' y='19' fill='%23000000'%3EK%3C/text%3E%3Crect x='356' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='370' y='19' fill='%23000000'%3EL%3C/text%3E%3Crect x='388' y='6' width='28' height='18' fill='%23d4d0c8' stroke='%23808080'/%3E%3Ctext x='402' y='19' fill='%23000000'%3EM%3C/text%3E%3C/g%3E%3C/svg%3E");
   --suite-paper-lines: repeating-linear-gradient(180deg, transparent 0 21px, rgba(0, 0, 128, 0.12) 21px 22px);
   --suite-toolbar-bg: #c0c0c0;
   --suite-toolbar-border: #808080;
@@ -1920,8 +1917,8 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 
 /* ============================================================================
    NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY
-   Light index cards, 3D windows, and a Cardfile letter strip. Applies in
-   both Obsidian color schemes so Cardfile stays period-accurate.
+   Light index cards and 3D windows. Applies in both Obsidian color
+   schemes so Cardfile stays period-accurate. No replica A–M letter strip.
    ============================================================================ */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {
@@ -1981,25 +1978,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   background-image: var(--suite-paper-grain), var(--suite-paper-lines);
   background-repeat: repeat, repeat;
 }
-
-body:is(.theme-dark, .theme-light):not(.is-mobile)
-  .workspace-split.mod-root
-  .view-content::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--suite-spiral-height);
-  z-index: 6;
-  pointer-events: none;
-  background-image: var(--suite-spiral);
-  background-repeat: repeat-x;
-  background-position: left top;
-  background-size: 420px 28px;
-  box-shadow: 0 2px 0 #000000;
-}
-
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root
