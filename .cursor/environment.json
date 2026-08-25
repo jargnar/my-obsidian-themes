@@ -1,0 +1,11 @@
+{
+  "name": "Obsidian Themes Dev",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/vault-setup.sh",
+  "terminals": [
+    {
+      "name": "obsidian",
+      "command": "bash .cursor/run-obsidian.sh"
+    }
+  ]
+}
