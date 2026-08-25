@@ -1030,13 +1030,13 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   box-shadow: var(--suite-danger-shadow);
 }
 
-/* Sidedock new-tab clones stay hidden. The shared control rules above
-   un-hide every .workspace-tab-header-new-tab; in an open left dock that
-   plus is order 0 and lands under the macOS traffic lights. */
+/* Sidedock new-tab and tab-list clones stay hidden. The shared control
+   rules above un-hide every chrome control; in an open left dock those
+   extras are order 0 and land under the macOS traffic lights. */
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split:is(.mod-left-split, .mod-right-split)
   .workspace-tabs.mod-top
-  .workspace-tab-header-new-tab {
+  :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list) {
   display: none;
 }
 
