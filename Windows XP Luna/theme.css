@@ -1,6 +1,6 @@
 /*
  * Windows XP Luna — standalone Obsidian desktop theme
- * Version 3.1.2; designed for Obsidian 1.13.7+.
+ * Version 3.1.3; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
  * mobile keeps its default UI. No external assets, remote fonts, or
@@ -67,14 +67,14 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
   --suite-text-strong: #111111;
   --suite-text-soft: #2c2c2c;
   --suite-text-muted: #5c5648;
-  --suite-text-faint: #8a8474;
+  --suite-text-faint: #6e6858;
   --suite-icon: #3f5680;
   --suite-icon-hover: #0b4ca4;
   --suite-icon-active: #003399;
 
   --suite-sidebar-text: #16284a;
   --suite-sidebar-text-muted: #2c4470;
-  --suite-sidebar-text-faint: #5a7196;
+  --suite-sidebar-text-faint: #4a6080;
   --suite-sidebar-active-text: #ffffff;
   --suite-sidebar-icon: #3d5a86;
   --suite-sidebar-icon-hover: #1d4f92;
@@ -112,7 +112,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
   --suite-ribbon-bg: linear-gradient(180deg, #edf5ff, #c5d6f0);
 
   --suite-control-text: #ffffff;
-  --suite-control-icon-filter: drop-shadow(0 1px 0 rgba(0, 32, 96, 0.62));
+  --suite-control-icon-filter: drop-shadow(0 1px 0 rgba(0, 24, 80, 0.82));
   --suite-control-border: #073b96;
   --suite-control-bg:
     linear-gradient(180deg, rgba(255,255,255,0.36), rgba(255,255,255,0.06) 42%, rgba(0,0,0,0.10) 48%),
@@ -213,7 +213,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --suite-input-text: #111111;
   --suite-input-border: #7f9db9;
-  --suite-input-placeholder: #777777;
+  --suite-input-placeholder: #5f5a4c;
   --suite-input-shadow: inset 1px 1px 2px rgba(0,0,0,0.18);
 
   --suite-checkbox-border: #7f9db9;
@@ -313,7 +313,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --color-red: #c23b22;
   --color-orange: #c56a12;
-  --color-yellow: #9a7400;
+  --color-yellow: #7a5a00;
   --color-green: #267c08;
   --color-cyan: #0a6f7a;
   --color-blue: #316ac5;
@@ -752,8 +752,15 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
   --suite-icon-size: 17px;
   --suite-chrome-gap: 4px;
   --suite-edge-gap: 6px;
-  --suite-macos-traffic-gap: 12px;
+  --suite-macos-traffic-gap: 16px;
   --suite-macos-ribbon-compensation: 0px;
+  --suite-macos-safe-left: 0px;
+  --suite-left-chrome-min: calc(
+    (var(--suite-side-tab-size) + 2px) * 3 +
+    var(--suite-control-size) +
+    var(--suite-edge-gap) +
+    8px
+  );
 }
 
 /* Theme --ribbon-width beats Obsidian's hidden-ribbon reset. Put it back
@@ -1222,6 +1229,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   width: var(--suite-icon-size);
   height: var(--suite-icon-size);
   margin: 0;
+  color: var(--icon-color);
   filter: var(--suite-control-icon-filter, none);
 }
 
@@ -1251,6 +1259,13 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   margin-right: 0;
 }
 
+/* Open left dock cannot shrink under the traffic-light well plus the
+   three icon tabs and the collapse control. */
+body:is(.theme-dark, .theme-light):not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace-split.mod-left-split:not(.is-sidedock-collapsed) {
+  min-width: calc(var(--suite-macos-safe-left) + var(--suite-left-chrome-min));
+}
+
 /* macOS traffic-light safe area.
    Obsidian sets --frame-left-space to (80px - ribbon-width). Keep a dedicated
    gap after that well so the themed buttons never kiss the green light.
@@ -1268,14 +1283,18 @@ body.mod-macos:is(.theme-dark, .theme-light):not(.is-mobile):is(.hider-ribbon, .
   --suite-macos-ribbon-compensation: var(--ribbon-width, 42px);
 }
 
-body.mod-macos:is(.theme-dark, .theme-light):not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
-  .workspace-tabs.mod-top-left-space
-  > .workspace-tab-header-container {
-  padding-left: calc(
+body.mod-macos:is(.theme-dark, .theme-light):not(.is-mobile):not(.is-fullscreen):not(.is-popout-window) {
+  --suite-macos-safe-left: calc(
     var(--frame-left-space, 80px) +
     var(--suite-macos-ribbon-compensation) +
     var(--suite-macos-traffic-gap)
   );
+}
+
+body.mod-macos:is(.theme-dark, .theme-light):not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace-tabs.mod-top-left-space
+  > .workspace-tab-header-container {
+  padding-left: var(--suite-macos-safe-left);
 }
 
 body.mod-macos:is(.theme-dark, .theme-light):not(.is-mobile)
@@ -1712,6 +1731,10 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 }
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .status-bar {
+  --icon-color: var(--suite-status-text);
+  --icon-color-hover: #ffffff;
+  --icon-color-active: #ffffff;
+  --icon-color-focused: #ffffff;
   color: var(--suite-status-text);
   border-color: var(--suite-status-border);
   border-radius: var(--suite-status-radius);

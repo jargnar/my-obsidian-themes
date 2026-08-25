@@ -1,6 +1,6 @@
 /*
  * Vercel Noir — standalone Obsidian desktop theme
- * Version 3.0.2; designed for Obsidian 1.13.7+.
+ * Version 3.0.3; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded by
  * body.theme-dark:not(.is-mobile), so Obsidian mobile keeps its default UI.
@@ -709,8 +709,15 @@ body.theme-dark:not(.is-mobile) {
   --suite-icon-size: 17px;
   --suite-chrome-gap: 4px;
   --suite-edge-gap: 6px;
-  --suite-macos-traffic-gap: 12px;
+  --suite-macos-traffic-gap: 16px;
   --suite-macos-ribbon-compensation: 0px;
+  --suite-macos-safe-left: 0px;
+  --suite-left-chrome-min: calc(
+    (var(--suite-side-tab-size) + 2px) * 3 +
+    var(--suite-control-size) +
+    var(--suite-edge-gap) +
+    8px
+  );
 }
 
 /* Theme --ribbon-width beats Obsidian's hidden-ribbon reset. Put it back
@@ -1179,6 +1186,7 @@ body.theme-dark:not(.is-mobile)
   width: var(--suite-icon-size);
   height: var(--suite-icon-size);
   margin: 0;
+  color: var(--icon-color);
   filter: var(--suite-control-icon-filter, none);
 }
 
@@ -1208,6 +1216,13 @@ body.theme-dark:not(.is-mobile)
   margin-right: 0;
 }
 
+/* Open left dock cannot shrink under the traffic-light well plus the
+   three icon tabs and the collapse control. */
+body.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace-split.mod-left-split:not(.is-sidedock-collapsed) {
+  min-width: calc(var(--suite-macos-safe-left) + var(--suite-left-chrome-min));
+}
+
 /* macOS traffic-light safe area.
    Obsidian sets --frame-left-space to (80px - ribbon-width). Keep a dedicated
    gap after that well so the themed buttons never kiss the green light.
@@ -1225,14 +1240,18 @@ body.mod-macos.theme-dark:not(.is-mobile):is(.hider-ribbon, .hide-ribbon) {
   --suite-macos-ribbon-compensation: var(--ribbon-width, 42px);
 }
 
-body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
-  .workspace-tabs.mod-top-left-space
-  > .workspace-tab-header-container {
-  padding-left: calc(
+body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window) {
+  --suite-macos-safe-left: calc(
     var(--frame-left-space, 80px) +
     var(--suite-macos-ribbon-compensation) +
     var(--suite-macos-traffic-gap)
   );
+}
+
+body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace-tabs.mod-top-left-space
+  > .workspace-tab-header-container {
+  padding-left: var(--suite-macos-safe-left);
 }
 
 body.mod-macos.theme-dark:not(.is-mobile)
