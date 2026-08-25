@@ -1,6 +1,6 @@
 /*
  * Aqua 2000 — standalone Obsidian desktop theme
- * Version 3.0.0; designed for Obsidian 1.13.7+.
+ * Version 3.0.1; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded by
  * body.theme-dark:not(.is-mobile), so Obsidian mobile keeps its default UI.
@@ -1016,7 +1016,19 @@ body.theme-dark:not(.is-mobile)
   box-shadow: var(--suite-danger-shadow);
 }
 
-/* Closed sidebars: toggles enter the root row without disturbing tab geometry. */
+/* Sidedock new-tab clones stay hidden. The shared control rules above
+   un-hide every .workspace-tab-header-new-tab; in an open left dock that
+   plus is order 0 and lands under the macOS traffic lights. */
+body.theme-dark:not(.is-mobile)
+  .workspace-split:is(.mod-left-split, .mod-right-split)
+  .workspace-tabs.mod-top
+  .workspace-tab-header-new-tab {
+  display: none;
+}
+
+/* Closed sidebars: toggles enter the root row without disturbing tab geometry.
+   Root actions sit as [tabs][spacer][+ new tab][tab list][right toggle] so
+   the plus is not stranded in the middle of the titlebar. */
 body.theme-dark:not(.is-mobile)
   .workspace-split.mod-root
   .workspace-tabs.mod-top-left-space
@@ -1027,18 +1039,51 @@ body.theme-dark:not(.is-mobile)
 
 body.theme-dark:not(.is-mobile)
   .workspace-split.mod-root
-  .workspace-tabs.mod-top-left-space
+  .workspace-tabs.mod-top
   > .workspace-tab-header-container
   > .workspace-tab-header-container-inner {
-  order: -1;
+  order: 0;
 }
 
 body.theme-dark:not(.is-mobile)
   .workspace-split.mod-root
-  .workspace-tabs.mod-top-right-space
-  .sidebar-toggle-button.mod-right {
-  order: 99;
+  .workspace-tabs.mod-top
+  > .workspace-tab-header-container
+  > .workspace-tab-header-spacer {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 8px;
+  order: 1;
+}
+
+body.theme-dark:not(.is-mobile)
+  .workspace-split.mod-root
+  .workspace-tabs.mod-top
+  > .workspace-tab-header-container
+  > .workspace-tab-header-new-tab {
+  position: relative;
+  inset: auto;
+  left: auto;
+  top: auto;
+  right: auto;
+  order: 2;
   margin-left: auto;
+}
+
+body.theme-dark:not(.is-mobile)
+  .workspace-split.mod-root
+  .workspace-tabs.mod-top
+  > .workspace-tab-header-container
+  > .workspace-tab-header-tab-list {
+  order: 3;
+}
+
+body.theme-dark:not(.is-mobile)
+  .workspace-split.mod-root
+  .workspace-tabs.mod-top
+  .sidebar-toggle-button.mod-right {
+  order: 4;
+  margin-left: 0;
 }
 
 /* Open sidebars: icon tabs and the collapse control use the same square grid. */
@@ -1218,7 +1263,25 @@ body.mod-macos.theme-dark:not(.is-mobile):is(.is-fullscreen, .is-popout-window)
   padding-left: var(--suite-edge-gap);
 }
 
-body:not(.mod-macos).theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+/* Beat Obsidian's frameless padding-right. On macOS --frame-right-space
+   is empty (traffic lights are on the left) and only leaves a dead margin
+   after the right sidebar toggle. Windows/Linux still reserve caption buttons. */
+body.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace
+  .workspace-tabs.mod-top-right-space
+  > .workspace-tab-header-container {
+  padding-right: var(--suite-edge-gap);
+}
+
+body.mod-macos.theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window)
+  .workspace
+  .workspace-tabs.mod-top-right-space
+  > .workspace-tab-header-container {
+  padding-right: var(--suite-edge-gap);
+}
+
+body:not(.mod-macos).theme-dark:not(.is-mobile):not(.is-fullscreen):not(.is-popout-window).is-hidden-frameless
+  .workspace
   .workspace-tabs.mod-top-right-space
   > .workspace-tab-header-container {
   padding-right: calc(var(--frame-right-space, 0px) + var(--suite-edge-gap));
