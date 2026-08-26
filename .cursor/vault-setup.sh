@@ -59,6 +59,7 @@ Switch themes from **Settings -> Appearance -> Themes**. All repo themes
 are linked into `.obsidian/themes/` automatically:
 
 - Aqua 2000
+- Hobonichi Techo
 - Lotus Organizer
 - Newton MessagePad
 - Palm OS Memo Pad
@@ -120,6 +121,7 @@ Normal text with **bold**, *italic*, ~~strikethrough~~, `inline code`, and a
 | Theme                 | Author | Version |
 | --------------------- | ------ | ------- |
 | Aqua 2000             | Suhas  | 3.0.3   |
+| Hobonichi Techo       | Suhas  | 1.0.0   |
 | Lotus Organizer       | Suhas  | 1.0.0   |
 | Newton MessagePad     | Suhas  | 1.0.0   |
 | Palm OS Memo Pad      | Suhas  | 1.0.0   |
