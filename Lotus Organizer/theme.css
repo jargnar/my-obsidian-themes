@@ -1,16 +1,16 @@
 /*
  * Lotus Organizer — standalone Obsidian desktop theme
- * Version 1.0.0; designed for Obsidian 1.13.7+.
+ * Version 1.0.1; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
  * mobile keeps its default UI. No external assets, remote fonts, or
  * companion snippets are required.
  *
  * Homage to Lotus Organizer (2.1 / 97), the 1990s Filofax-on-Windows
- * PIM: burgundy leather cover, brass binder rings, cream ruled pages,
- * and rainbow section tabs. UI chrome uses Tahoma; titles use Georgia.
- * Light-client in both Appearance schemes — Organizer was never a
- * black editor.
+ * PIM: burgundy leather cover and a cream page for focused writing.
+ * No replica binder rings or rainbow section tabs in the editor.
+ * UI chrome uses Tahoma; titles use Georgia. Light-client in both
+ * Appearance schemes — Organizer was never a black editor.
  */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) {
@@ -276,13 +276,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --suite-paper-bg: #f4ead0;
   --suite-paper-alt: #eadfb8;
-  --suite-spiral-height: 36px;
-  --suite-spiral-bar: #8a6a28;
-  --suite-spiral: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cdefs%3E%3ClinearGradient id='brass' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffe9a0'/%3E%3Cstop offset='.4' stop-color='%23d4a017'/%3E%3Cstop offset='1' stop-color='%237a5410'/%3E%3C/linearGradient%3E%3ClinearGradient id='bar' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23e8c04a'/%3E%3Cstop offset='1' stop-color='%238a5a14'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' width='10' height='36' fill='url(%23bar)'/%3E%3Cellipse cx='16' cy='18' rx='11' ry='8.5' fill='none' stroke='url(%23brass)' stroke-width='3'/%3E%3Cellipse cx='16' cy='18' rx='11' ry='8.5' fill='none' stroke='%23fff3c4' stroke-width='0.7' opacity='.4'/%3E%3Ccircle cx='24' cy='18' r='2.7' fill='%238a6a28'/%3E%3Ccircle cx='24' cy='18' r='1.35' fill='%23f4ead0'/%3E%3C/svg%3E");
-  --suite-paper-lines:
-    linear-gradient(90deg, transparent 46px, rgba(139, 42, 64, 0.38) 46px, rgba(139, 42, 64, 0.38) 48px, transparent 48px),
-    repeating-linear-gradient(180deg, transparent 0, transparent 27px, rgba(90, 120, 170, 0.16) 27px, rgba(90, 120, 170, 0.16) 28px);
-  --suite-section-tabs: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='252' viewBox='0 0 22 252'%3E%3Crect x='3' y='4' width='19' height='34' rx='5' fill='%23e86868' stroke='%238a2020' stroke-width='1'/%3E%3Crect x='3' y='44' width='19' height='34' rx='5' fill='%23f0b24a' stroke='%238a5a10' stroke-width='1'/%3E%3Crect x='3' y='84' width='19' height='34' rx='5' fill='%235ec87a' stroke='%231a5a28' stroke-width='1'/%3E%3Crect x='3' y='124' width='19' height='34' rx='5' fill='%235a9ae0' stroke='%231a4478' stroke-width='1'/%3E%3Crect x='3' y='164' width='19' height='34' rx='5' fill='%233cb8b8' stroke='%230f4a4a' stroke-width='1'/%3E%3Crect x='3' y='204' width='19' height='34' rx='5' fill='%239a6ad4' stroke='%233a2068' stroke-width='1'/%3E%3C/svg%3E");
   --suite-toolbar-bg: linear-gradient(180deg, #faf3e2, #efe4c8 55%, #e4d6b4);
   --suite-toolbar-border: #c4b089;
   --suite-window-frame: #7a2438;
@@ -495,7 +488,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) {
 
   --file-line-width: 760px;
   --file-folding-offset: 24px;
-  --file-margins: 28px 36px 72px 64px;
+  --file-margins: 28px 36px 72px 36px;
   --file-header-font-size: 12px;
   --file-header-font-weight: 500;
   --file-header-border: 0;
@@ -1843,7 +1836,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile) :is(.tag, a.tag) {
 @media (max-width: 700px) {
   body:is(.theme-dark, .theme-light):not(.is-mobile) {
     --file-line-width: 100%;
-    --file-margins: 24px 18px 56px 56px;
+    --file-margins: 24px 18px 56px 18px;
     --inline-title-size: 1.9em;
     --h1-size: 1.65em;
     --h2-size: 1.4em;
@@ -1982,8 +1975,9 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 
 /* ============================================================================
    NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY
-   Light client areas, inked type, and a cream Filofax page with brass rings.
-   Applies in both Obsidian color schemes so Organizer stays period-accurate.
+   Light client areas, inked type, and a cream Filofax page. Applies in
+   both Obsidian color schemes so Organizer stays period-accurate.
+   No replica binder rings or rainbow section tabs in the editor.
    ============================================================================ */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {
@@ -2026,22 +2020,6 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root
-  .view-content::before {
-  content: "";
-  position: absolute;
-  top: 28px;
-  right: 0;
-  width: 22px;
-  height: 252px;
-  z-index: 5;
-  pointer-events: none;
-  background-image: var(--suite-section-tabs);
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-
-body:is(.theme-dark, .theme-light):not(.is-mobile)
-  .workspace-split.mod-root
   :is(.markdown-source-view, .markdown-reading-view, .markdown-preview-view) {
   position: relative;
   color: var(--suite-text);
@@ -2052,28 +2030,8 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
   .workspace-split.mod-root
   :is(.markdown-source-view.mod-cm6 .cm-scroller, .markdown-preview-view) {
   background-color: var(--suite-paper-bg);
-  background-image: var(--suite-paper-grain), var(--suite-paper-lines);
-  background-repeat: repeat, no-repeat, repeat;
-}
-
-body:is(.theme-dark, .theme-light):not(.is-mobile)
-  .workspace-split.mod-root
-  .view-content::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: var(--suite-spiral-height);
-  z-index: 6;
-  pointer-events: none;
-  background-image:
-    var(--suite-spiral),
-    linear-gradient(90deg, var(--suite-spiral-bar) 0 8px, rgba(90, 60, 16, 0.45) 8px 10px, transparent 10px);
-  background-repeat: repeat-y, no-repeat;
-  background-position: 0 0, 0 0;
-  background-size: 36px 36px, 100% 100%;
-  box-shadow: 8px 0 12px rgba(80, 40, 16, 0.10);
+  background-image: var(--suite-paper-grain);
+  background-repeat: repeat;
 }
 
 body:is(.theme-dark, .theme-light):not(.is-mobile)

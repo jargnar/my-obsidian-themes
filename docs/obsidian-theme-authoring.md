@@ -66,12 +66,12 @@ Line counts on `main` at the time of writing:
 | `Vercel Noir/theme.css` | 1817 |
 | `Windows XP Luna/theme.css` | 2190 |
 | `Windows Vista Aero/theme.css` | 2186 |
-| `Lotus Organizer/theme.css` | 2252 |
+| `Lotus Organizer/theme.css` | 2210 |
 | `Newton MessagePad/theme.css` | 2162 |
 | `Windows 3.1 Cardfile/theme.css` | 2155 |
 | `Palm OS Memo Pad/theme.css` | 2158 |
 
-Light-client themes are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Binding decorations: XP/Vista use a top spiral, Organizer uses left brass rings. Newton, Cardfile, and Palm keep the paper/LCD feel without replica letter strips or silk bars in the editor.
+Light-client themes are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Binding decorations: XP/Vista use a top spiral. Organizer, Newton, Cardfile, and Palm keep the paper/LCD feel without replica rings, letter strips, or silk bars in the editor.
 
 Current versions:
 
@@ -81,7 +81,7 @@ Current versions:
 | Vercel Noir | 3.0.3 |
 | Windows XP Luna | 3.1.3 |
 | Windows Vista Aero | 3.1.3 |
-| Lotus Organizer | 1.0.0 |
+| Lotus Organizer | 1.0.1 |
 | Newton MessagePad | 1.0.1 |
 | Windows 3.1 Cardfile | 1.0.1 |
 | Palm OS Memo Pad | 1.0.1 |
@@ -138,7 +138,7 @@ Do this, in order.
 From Obsidian's own theme guidelines, plus what we verified in 1.13.7:
 
 - A theme is `manifest.json` + `theme.css`. Nothing else is required.
-- **No remote assets.** Community themes must not fetch fonts or images. XP / Vista / Organizer rings and paper grain are `data:image/svg+xml,…` URLs.
+- **No remote assets.** Community themes must not fetch fonts or images. XP / Vista rings and paper grain are `data:image/svg+xml,…` URLs.
 - **No `!important`.** Every theme has zero. Specificity comes from long `body…` selectors. Snippets and user overrides should still be able to win.
 - Prefer **CSS variables** over restyling every component. The OBSIDIAN VARIABLE MAP exists so core and plugins pick up the palette without per-widget rules.
 - Official docs say: put scheme-independent variables on `body`, colors on `.theme-dark` / `.theme-light`, and use `:root` sparingly (plugin authors hang things there). This repo puts almost everything on the guarded `body…` selector so mobile is untouched.
@@ -159,7 +159,7 @@ Every file is the same story in the same order. Keep new rules in the matching c
 5. **SURFACES, NAVIGATION, AND STANDARD CONTROLS** — ribbon, splits, nav, buttons, inputs, tooltips, status bar, scrollbars.
 6. **EDITOR AND DOCUMENT POLISH** — headings, code, tables, callouts, reduced-motion, narrow-width tweaks.
 7. **PERIOD FOLDER GLYPHS** — extra folder body on file-explorer titles. Native disclosure chevron stays.
-8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — every light-client theme. Light root panes, period binding where it still helps (top spiral, left rings), Settings ink-on-paper, modal window frames. Newton / Cardfile / Palm skip replica silk and letter-strip overlays. Aqua / Noir do not have this chapter.
+8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — every light-client theme. Light root panes, period binding where it still helps (XP/Vista top spiral), Settings ink-on-paper, modal window frames. Organizer / Newton / Cardfile / Palm skip replica rings, silk, and letter-strip overlays. Aqua / Noir do not have this chapter.
 
 ### 4.1 Palette tokens you will actually paint with
 
@@ -179,7 +179,7 @@ Names are shared across themes even when the hues differ. The important clusters
 | `--suite-ghost-*` | Hover/active treatment for in-pane `.clickable-icon` (view header, nav). |
 | `--suite-status-*` | Status bar. On XP/Vista this is also blue chrome and needs the same icon pin as the titlebar. |
 
-Light-client extras that are not in Aqua / Noir: grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer / Newton / Cardfile / Palm reuse it for period home capsules). XP / Vista / Organizer keep `--suite-spiral*` binding art; Newton, Cardfile, and Palm do not. Organizer, Newton, Cardfile, and Palm also define `--suite-paper-lines`.
+Light-client extras that are not in Aqua / Noir: grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer / Newton / Cardfile / Palm reuse it for period home capsules). XP / Vista keep `--suite-spiral*` binding art; Organizer, Newton, Cardfile, and Palm do not. Newton, Cardfile, and Palm also define `--suite-paper-lines`.
 
 ### 4.2 Why the variable map exists
 
@@ -984,7 +984,7 @@ BODY :is(.vertical-tab-content, .horizontal-tab-content)  /* XP/Vista settings *
 | Dark editor, **saturated** chrome | Aqua 2000, then recolor `--suite-chrome-*` / `--suite-control-text` | same | Pin `--icon-color` on the header even if you think contrast is fine. |
 | Light notepad + blue chrome | Windows XP Luna | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Geometry + notebook/settings chapter + status-bar icon pin. |
 | Light notepad + glass chrome | Windows Vista Aero | same | Same as Luna. Do not assume Vista's `--suite-start-green` does anything. |
-| Light notepad + burgundy leather | Lotus Organizer | same | Same as Luna, plus rainbow section-tab folders and left-edge brass rings. |
+| Light notepad + burgundy leather | Lotus Organizer | same | Same as Luna, minus the spiral overlay. Rainbow section-tab folders stay in the file explorer. No replica binder rings. |
 | Light LCD + black hardware | Newton MessagePad | same | Same as Luna, minus the spiral overlay. Dark view-header icon pin. No replica silk bar. |
 | Light index cards + navy chrome | Windows 3.1 Cardfile | same | Same as Luna, minus the spiral overlay. Status bar is gray: pin dark icons. No replica letter strip. |
 | Light olive LCD + charcoal plastic | Palm OS Memo Pad | same | Same as Luna, minus the spiral overlay. Dark view-header icon pin. No replica graffiti silk. |
