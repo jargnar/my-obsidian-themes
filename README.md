@@ -1,6 +1,6 @@
 # my-obsidian-themes
 
-Eight standalone Obsidian desktop themes, each a folder with `manifest.json` and `theme.css`:
+Nine standalone Obsidian desktop themes, each a folder with `manifest.json` and `theme.css`:
 
 | Folder | Palette | Client surfaces | Body guard |
 | --- | --- | --- | --- |
@@ -9,6 +9,7 @@ Eight standalone Obsidian desktop themes, each a folder with `manifest.json` and
 | `Windows XP Luna` | Luna Blue chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows Vista Aero` | Aero glass chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Lotus Organizer` | Burgundy leather, brass rings, cream Filofax pages | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Hobonichi Techo` | Candy-apple cover, cream graph paper, red bookmark | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Newton MessagePad` | Black hardware, olive-green LCD, silk buttons | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows 3.1 Cardfile` | Navy titlebar, 3D gray chrome, index cards | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Palm OS Memo Pad` | Charcoal plastic, olive graffiti LCD | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
@@ -29,6 +30,7 @@ XP / Vista already own the yellow legal pad. New period themes clone **Windows X
 | **Newton MessagePad Notes** | Green LCD and black hardware bezel. Homage, not a replica silk bar. | Shipped |
 | **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. No replica A–M letter strip. | Shipped |
 | **Palm OS Memo Pad** | Olive graffiti LCD and charcoal plastic. Homage, not a replica 123 silk. | Shipped |
+| **Hobonichi Techo** | Japanese daily planner. Candy-apple cover, cream graph, bookmark ribbon. | Shipped |
 | HyperCard | Card stacks, Home button, System 7 chrome. | Needs stacked-tab work this repo has not restyled |
 | ECCO Pro | Famous outliner, visually plain. | Skipped |
 | Lotus Notes R4/R5 | Green workspace tabs. Groupware, not a personal notebook. | Skipped |
