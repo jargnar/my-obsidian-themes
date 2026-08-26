@@ -8,7 +8,7 @@ Nine standalone Obsidian desktop themes, each a folder with `manifest.json` and 
 | `Vercel Noir` | Neutral / no chromatic UI accents | Dark | `body.theme-dark:not(.is-mobile)` |
 | `Windows XP Luna` | Luna Blue chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows Vista Aero` | Aero glass chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
-| `Lotus Organizer` | Burgundy leather, brass rings, cream Filofax pages | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Lotus Organizer` | Burgundy leather, cream Filofax pages | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Hobonichi Techo` | Candy-apple cover, cream graph paper, red bookmark | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Newton MessagePad` | Black hardware, olive-green LCD, silk buttons | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows 3.1 Cardfile` | Navy titlebar, 3D gray chrome, index cards | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
@@ -44,7 +44,7 @@ Captured in the sample vault on Obsidian 1.13.7: left file explorer open, `Notes
 <tr>
 <td align="center" valign="top" width="50%">
 <strong>Lotus Organizer</strong><br>
-<img src="docs/screenshots/lotus-organizer.png" alt="Lotus Organizer theme: burgundy leather chrome, brass rings, cream Filofax pages">
+<img src="docs/screenshots/lotus-organizer.png" alt="Lotus Organizer theme: burgundy leather chrome and cream Filofax page">
 </td>
 <td align="center" valign="top" width="50%">
 <strong>Hobonichi Techo</strong><br>
@@ -79,7 +79,7 @@ XP / Vista already own the yellow legal pad. New period themes clone **Windows X
 
 | Homage | Why it works here | Status |
 | --- | --- | --- |
-| **Lotus Organizer 2.1 / 97** | Filofax-on-Windows PIM. Burgundy cover, brass rings, rainbow section tabs. | Shipped |
+| **Lotus Organizer 2.1 / 97** | Filofax-on-Windows PIM. Burgundy cover and cream pages. Homage, not a replica ring binder. | Shipped |
 | **Newton MessagePad Notes** | Green LCD and black hardware bezel. Homage, not a replica silk bar. | Shipped |
 | **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. No replica A–M letter strip. | Shipped |
 | **Palm OS Memo Pad** | Olive graffiti LCD and charcoal plastic. Homage, not a replica 123 silk. | Shipped |
