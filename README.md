@@ -47,15 +47,21 @@ Captured in the sample vault on Obsidian 1.13.7: left file explorer open, `Notes
 <img src="docs/screenshots/lotus-organizer.png" alt="Lotus Organizer theme: burgundy leather chrome, brass rings, cream Filofax pages">
 </td>
 <td align="center" valign="top" width="50%">
-<strong>Newton MessagePad</strong><br>
-<img src="docs/screenshots/newton-messagepad.png" alt="Newton MessagePad theme: black hardware chrome and olive-green LCD editor">
+<strong>Hobonichi Techo</strong><br>
+<img src="docs/screenshots/hobonichi-techo.png" alt="Hobonichi Techo theme: candy-apple cover chrome, cream graph paper, red bookmark">
 </td>
 </tr>
 <tr>
 <td align="center" valign="top" width="50%">
+<strong>Newton MessagePad</strong><br>
+<img src="docs/screenshots/newton-messagepad.png" alt="Newton MessagePad theme: black hardware chrome and olive-green LCD editor">
+</td>
+<td align="center" valign="top" width="50%">
 <strong>Windows 3.1 Cardfile</strong><br>
 <img src="docs/screenshots/windows-3.1-cardfile.png" alt="Windows 3.1 Cardfile theme: navy titlebar, 3D gray chrome, index-card pages">
 </td>
+</tr>
+<tr>
 <td align="center" valign="top" width="50%">
 <strong>Palm OS Memo Pad</strong><br>
 <img src="docs/screenshots/palm-os-memo-pad.png" alt="Palm OS Memo Pad theme: charcoal plastic chrome and olive graffiti LCD">
