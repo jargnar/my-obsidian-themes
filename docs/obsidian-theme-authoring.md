@@ -16,7 +16,7 @@ This document is the unofficial half: the DOM, the traps, and the geometry this 
 
 ## 1. What this repo actually is
 
-Not a plugin. Not a snippet pack. Nine **standalone community-style themes**.
+Not a plugin. Not a snippet pack. Ten **standalone community-style themes**.
 
 Each theme is a top-level folder that contains exactly two required files:
 
@@ -45,6 +45,9 @@ Windows 3.1 Cardfile/
 Windows XP Luna/
   manifest.json
   theme.css
+Windows XP Techo/
+  manifest.json
+  theme.css
 Windows Vista Aero/
   manifest.json
   theme.css
@@ -57,7 +60,7 @@ A theme **cannot import another theme's CSS**. There is no shared `geometry.css`
 | Family | Guard | Why |
 | --- | --- | --- |
 | Aqua 2000, Vercel Noir | `body.theme-dark:not(.is-mobile)` | Dark clients. If the user flips Appearance to Light, these themes go inert and stock light UI returns. |
-| Windows XP Luna, Windows Vista Aero, Lotus Organizer, Hobonichi Techo, Newton MessagePad, Windows 3.1 Cardfile, Palm OS Memo Pad | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
+| Windows XP Luna, Windows XP Techo, Windows Vista Aero, Lotus Organizer, Hobonichi Techo, Newton MessagePad, Windows 3.1 Cardfile, Palm OS Memo Pad | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Period-accurate **light clients** even when the user picked Dark. They also set `color-scheme: light`. |
 
 If you copy geometry into a new theme and keep the wrong guard, either the chrome never applies or it fails when the user toggles the base color scheme.
 
@@ -68,6 +71,7 @@ Line counts on `main` at the time of writing:
 | `Aqua 2000/theme.css` | 1929 |
 | `Vercel Noir/theme.css` | 1817 |
 | `Windows XP Luna/theme.css` | 2190 |
+| `Windows XP Techo/theme.css` | 2194 |
 | `Windows Vista Aero/theme.css` | 2186 |
 | `Lotus Organizer/theme.css` | 2252 |
 | `Hobonichi Techo/theme.css` | 2229 |
@@ -75,7 +79,7 @@ Line counts on `main` at the time of writing:
 | `Windows 3.1 Cardfile/theme.css` | 2155 |
 | `Palm OS Memo Pad/theme.css` | 2158 |
 
-Light-client themes are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Binding decorations: XP/Vista use a top spiral, Organizer uses left brass rings, Hobonichi uses a right-edge bookmark ribbon. Newton, Cardfile, and Palm keep the paper/LCD feel without replica letter strips or silk bars in the editor.
+Light-client themes are longer because they add a **notebook paper + settings readability** chapter after the shared geometry. Aqua / Noir stop after editor polish and folder glyphs. Binding decorations: XP/Vista use a top spiral, XP Techo and Organizer use a left binding (metal spiral / brass rings), Hobonichi uses a right-edge bookmark ribbon. Newton, Cardfile, and Palm keep the paper/LCD feel without replica letter strips or silk bars in the editor.
 
 Current versions:
 
@@ -84,6 +88,7 @@ Current versions:
 | Aqua 2000 | 3.0.3 |
 | Vercel Noir | 3.0.3 |
 | Windows XP Luna | 3.1.3 |
+| Windows XP Techo | 1.0.0 |
 | Windows Vista Aero | 3.1.3 |
 | Lotus Organizer | 1.0.0 |
 | Hobonichi Techo | 1.0.0 |
@@ -101,7 +106,7 @@ Do this, in order.
 
 1. **Pick a family.**
    - Dark editor + dark or mid chrome that is readable with the same ink as the panes: clone **Aqua 2000** or **Vercel Noir**.
-   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt), **Windows Vista Aero** (frosted glass), **Lotus Organizer** (burgundy leather), **Hobonichi Techo** (candy-apple + graph paper), **Newton MessagePad** (black + LCD), **Windows 3.1 Cardfile** (navy + gray 3D), or **Palm OS Memo Pad** (charcoal + olive LCD). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
+   - Light notepad / Explorer panes + saturated titlebar: clone **Windows XP Luna** (solid cobalt), **Windows XP Techo** (Luna + cream graph), **Windows Vista Aero** (frosted glass), **Lotus Organizer** (burgundy leather), **Hobonichi Techo** (candy-apple + graph paper), **Newton MessagePad** (black + LCD), **Windows 3.1 Cardfile** (navy + gray 3D), or **Palm OS Memo Pad** (charcoal + olive LCD). Do not clone Aqua and then try to force a light editor; you will re-hit the icon-leak and Settings dark-on-dark bugs.
 
 2. **Copy a whole folder.** Name it exactly as it should appear in Settings → Appearance → Themes. Example: `System 7/`.
 
@@ -164,7 +169,7 @@ Every file is the same story in the same order. Keep new rules in the matching c
 5. **SURFACES, NAVIGATION, AND STANDARD CONTROLS** — ribbon, splits, nav, buttons, inputs, tooltips, status bar, scrollbars.
 6. **EDITOR AND DOCUMENT POLISH** — headings, code, tables, callouts, reduced-motion, narrow-width tweaks.
 7. **PERIOD FOLDER GLYPHS** — extra folder body on file-explorer titles. Native disclosure chevron stays.
-8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — every light-client theme. Light root panes, period binding where it still helps (top spiral, left rings, Hobonichi bookmark), Settings ink-on-paper, modal window frames. Newton / Cardfile / Palm skip replica silk and letter-strip overlays. Aqua / Noir do not have this chapter.
+8. **NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY** — every light-client theme. Light root panes, period binding where it still helps (top spiral, left spiral/rings, Hobonichi bookmark), Settings ink-on-paper, modal window frames. Newton / Cardfile / Palm skip replica silk and letter-strip overlays. Aqua / Noir do not have this chapter.
 
 ### 4.1 Palette tokens you will actually paint with
 
@@ -184,7 +189,7 @@ Names are shared across themes even when the hues differ. The important clusters
 | `--suite-ghost-*` | Hover/active treatment for in-pane `.clickable-icon` (view header, nav). |
 | `--suite-status-*` | Status bar. On XP/Vista this is also blue chrome and needs the same icon pin as the titlebar. |
 
-Light-client extras that are not in Aqua / Noir: grain / paper tokens, window-frame chrome, Start-green (XP uses it for the ribbon orb; Vista currently defines unused copies; Organizer / Hobonichi / Newton / Cardfile / Palm reuse it for period home capsules). XP / Vista / Organizer keep `--suite-spiral*` binding art; Hobonichi uses `--suite-bookmark` instead; Newton, Cardfile, and Palm do not. Organizer, Hobonichi, Newton, Cardfile, and Palm also define `--suite-paper-lines`.
+Light-client extras that are not in Aqua / Noir: grain / paper tokens, window-frame chrome, Start-green (XP / XP Techo use it for the ribbon orb; Vista currently defines unused copies; Organizer / Hobonichi / Newton / Cardfile / Palm reuse it for period home capsules). XP / Vista / XP Techo / Organizer keep `--suite-spiral*` binding art; Hobonichi uses `--suite-bookmark` instead; Newton, Cardfile, and Palm do not. XP Techo, Organizer, Hobonichi, Newton, Cardfile, and Palm also define `--suite-paper-lines`.
 
 ### 4.2 Why the variable map exists
 
@@ -988,6 +993,7 @@ BODY :is(.vertical-tab-content, .horizontal-tab-content)  /* XP/Vista settings *
 | Dark editor, dark chrome | Vercel Noir or Aqua 2000 | `body.theme-dark:not(.is-mobile)` | Geometry + surfaces. Skip notebook chapter. |
 | Dark editor, **saturated** chrome | Aqua 2000, then recolor `--suite-chrome-*` / `--suite-control-text` | same | Pin `--icon-color` on the header even if you think contrast is fine. |
 | Light notepad + blue chrome | Windows XP Luna | `body:is(.theme-dark, .theme-light):not(.is-mobile)` | Geometry + notebook/settings chapter + status-bar icon pin. |
+| Light graph paper + blue chrome | Windows XP Techo | same | Same as Luna, with Hobonichi grid lines and a left spiral instead of a top spiral. No bookmark ribbon. |
 | Light notepad + glass chrome | Windows Vista Aero | same | Same as Luna. Do not assume Vista's `--suite-start-green` does anything. |
 | Light notepad + burgundy leather | Lotus Organizer | same | Same as Luna, plus rainbow section-tab folders and left-edge brass rings. |
 | Light graph paper + candy-apple cover | Hobonichi Techo | same | Same as Luna, minus the spiral overlay. Red view-header icon pin. Right-edge bookmark ribbon. Month-sticker folder dots. |
