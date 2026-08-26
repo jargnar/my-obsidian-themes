@@ -43,7 +43,7 @@ Captured in the sample vault on Obsidian 1.13.7: left file explorer open, `Notes
 <tr>
 <td align="center" valign="top" width="50%">
 <strong>Lotus Organizer</strong><br>
-<img src="docs/screenshots/lotus-organizer.png" alt="Lotus Organizer theme: burgundy leather chrome, brass rings, cream Filofax pages">
+<img src="docs/screenshots/lotus-organizer.png" alt="Lotus Organizer theme: burgundy leather chrome and cream Filofax page">
 </td>
 <td align="center" valign="top" width="50%">
 <strong>Newton MessagePad</strong><br>
