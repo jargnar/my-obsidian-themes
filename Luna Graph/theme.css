@@ -1,5 +1,5 @@
 /*
- * Windows XP Techo — standalone Obsidian desktop theme
+ * Luna Graph — standalone Obsidian desktop theme
  * Version 1.0.0; designed for Obsidian 1.13.7+.
  *
  * Desktop-only by design: every qualified rule is guarded so Obsidian
@@ -1939,7 +1939,7 @@ body:is(.theme-dark, .theme-light):not(.is-mobile)
 /* ============================================================================
    NOTEBOOK PAPER, PERIOD WINDOWS, AND SETTINGS READABILITY
    Light client areas, inked type, cream graph paper, and a left spiral.
-   Applies in both Obsidian color schemes so the techo stays paper either way.
+   Applies in both Obsidian color schemes so the page stays paper either way.
    ============================================================================ */
 
 body:is(.theme-dark, .theme-light):not(.is-mobile) .workspace {

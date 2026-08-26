@@ -67,7 +67,7 @@ are linked into `.obsidian/themes/` automatically:
 - Windows 3.1 Cardfile
 - Windows Vista Aero
 - Windows XP Luna
-- Windows XP Techo
+- Luna Graph
 
 Open the notes in the **Notes** folder to exercise headings, code, callouts,
 tables, and other elements that the themes style.
@@ -130,7 +130,7 @@ Normal text with **bold**, *italic*, ~~strikethrough~~, `inline code`, and a
 | Windows 3.1 Cardfile  | Suhas  | 1.0.0   |
 | Windows Vista Aero    | Suhas  | 3.1.3   |
 | Windows XP Luna       | Suhas  | 3.1.3   |
-| Windows XP Techo      | Suhas  | 1.0.0   |
+| Luna Graph            | Suhas  | 1.0.0   |
 
 ## Code block
 

@@ -7,7 +7,7 @@ Ten standalone Obsidian desktop themes, each a folder with `manifest.json` and `
 | `Aqua 2000` | Early-2000s Aqua, graphite + glossy blue | Dark | `body.theme-dark:not(.is-mobile)` |
 | `Vercel Noir` | Neutral / no chromatic UI accents | Dark | `body.theme-dark:not(.is-mobile)` |
 | `Windows XP Luna` | Luna Blue chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
-| `Windows XP Techo` | Luna Blue chrome, cream graph paper, left spiral | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
+| `Luna Graph` | Luna Blue chrome, cream graph paper, left spiral | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Windows Vista Aero` | Aero glass chrome, yellow spiral notepad | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Lotus Organizer` | Burgundy leather, brass rings, cream Filofax pages | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
 | `Hobonichi Techo` | Candy-apple cover, cream graph paper, red bookmark | Light in both schemes | `body:is(.theme-dark, .theme-light):not(.is-mobile)` |
@@ -38,8 +38,8 @@ Captured in the sample vault on Obsidian 1.13.7: left file explorer open, `Notes
 <img src="docs/screenshots/windows-xp-luna.png" alt="Windows XP Luna theme: Luna Blue chrome and yellow spiral notepad">
 </td>
 <td align="center" valign="top" width="50%">
-<strong>Windows XP Techo</strong><br>
-<img src="docs/screenshots/windows-xp-techo.png" alt="Windows XP Techo theme: Luna Blue chrome, cream graph paper, left spiral">
+<strong>Luna Graph</strong><br>
+<img src="docs/screenshots/luna-graph.png" alt="Luna Graph theme: Luna Blue chrome, cream graph paper, left spiral">
 </td>
 </tr>
 <tr>
@@ -89,7 +89,7 @@ XP / Vista already own the yellow legal pad. New period themes clone **Windows X
 | **Windows 3.1 Cardfile** | Navy title, 3D gray, stacked index cards on teal. No replica A–M letter strip. | Shipped |
 | **Palm OS Memo Pad** | Olive graffiti LCD and charcoal plastic. Homage, not a replica 123 silk. | Shipped |
 | **Hobonichi Techo** | Japanese daily planner. Candy-apple cover, cream graph, bookmark ribbon. | Shipped |
-| **Windows XP Techo** | Luna Blue chrome around Hobonichi cream graph paper. Left spiral, no bookmark. | Shipped |
+| **Luna Graph** | Luna Blue chrome around Hobonichi cream graph paper. Left spiral, no bookmark. | Shipped |
 | HyperCard | Card stacks, Home button, System 7 chrome. | Needs stacked-tab work this repo has not restyled |
 | ECCO Pro | Famous outliner, visually plain. | Skipped |
 | Lotus Notes R4/R5 | Green workspace tabs. Groupware, not a personal notebook. | Skipped |
